@@ -5,8 +5,13 @@ interface pictureInfo {
   desc: string;
 }
 
+interface pictureProps {
+  picture: pictureInfo,
+  onClick: () => void
+}
 
-export default function GalleryPicture({ picture } : { picture: pictureInfo }) {
+
+export default function GalleryPicture({ picture, onClick} : pictureProps) {
 
   return (
     <div className="overflow-hidden rounded-sm">
@@ -15,6 +20,7 @@ export default function GalleryPicture({ picture } : { picture: pictureInfo }) {
           src={picture.src} 
           alt={picture.alt} 
           className="w-full h-full object-cover hover:scale-101 transition-transform duration-500 cursor-pointer"
+          onClick={onClick}
         />
       </figure>
       <figcaption className="text-center">{picture.desc}</figcaption>

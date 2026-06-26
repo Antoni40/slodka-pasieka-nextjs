@@ -1,9 +1,6 @@
 "use client"
-import Link from "next/link"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPhone, faLocationDot, faHeart} from "@fortawesome/free-solid-svg-icons"
-import { faFacebook, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons"
-import NavBar from "./NavBar"
+import NavBar from "./components/common/NavBar"
+import Footer from "./components/common/Footer";
 
 
 function HomePage() {
@@ -22,7 +19,7 @@ function HomePage() {
 
         <main id="o-nas" className="my-8 w-5/6 mx-auto text-stone-800">
           <header className="mt-18 mb-12">
-            <h2 className="text-5xl font-bold text-center font-serif">Odkryj nasze słodkości</h2>
+            <h2 className="text-5xl font-bold text-center font-serif">Odkryj świat słodkości</h2>
           </header>
 
           <section className="flex flex-col lg:flex-row gap-8 items-center mb-20">
@@ -32,12 +29,25 @@ function HomePage() {
               <p className="text-l text-stone-600 leading-relaxed">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, qui? Architecto, aliquam obcaecati saepe rerum sequi nemo quidem corporis ab laboriosam porro ut ducimus facere in aliquid sapiente! Similique, molestias.</p>
             </div>
           </section>
+          
+          {/*Wsadzić tu jakieś png */}
+          <section className="grid grid-cols-1 items-center lg:grid-cols-3 gap-6 auto-rows-[500px] my-30 w-5/6 mx-auto text-stone-800">
+            <div className="h-full">
+              <img src="https://placehold.co/600x400" alt="Monoporcje" className="object-cover h-full"/>
+            </div>
+            <div className="h-full">
+              <img src="https://placehold.co/600x400" alt="Torty" className="object-cover h-full"/>
+            </div>
+            <div className="h-full">
+              <img src="https://placehold.co/600x400" alt="Lody" className="object-cover h-full"/>
+            </div>
+          </section>
 
           <header className="mt-26 mb-12">
             <h2 className="text-5xl font-bold text-center font-serif">Moja pasja</h2>
           </header>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2 gap-6 auto-rows-[200px] mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[500px] md:auto-rows-[600px] mb-20">
             
             <div className="h-full w-full order-1 md:order-1">
               <img src="https://placehold.co/200x200" alt="Słodkości" className="h-full w-full object-cover rounded-sm shadow-sm"/>
@@ -60,28 +70,7 @@ function HomePage() {
           </div>
         </main>
 
-        <footer className="bg-stone-800 text-amber-50 p-12 w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 w-5/6 mx-auto mb-3 gap-3 border-b border-white/10 items-center pb-3">
-            <div className="">
-              <img src="https://placehold.co/50x50" alt="Logo stopka" className="mb-3"/>
-              <div className="text-sm text-stone-200">&copy; Słodka Pasieka {new Date().getFullYear()}. Wszelkie prawa zastrzeżone.</div>
-              <div className="text-sm text-stone-300 mt-1">Realizacja i wdrożenie: Antoni Lubomski</div>
-            </div>
-            <div className="font-sans">
-              <h3 className="text-lg font-bold tracking wider mb-3 text-amber-200">INFORMACJE</h3>
-              <div className="flex flex-col gap-2 text-stone-300 text-sm">
-                  <div><FontAwesomeIcon icon={faPhone} className="pr-2 text-amber-200 text-sm"/>ZADZWOŃ DO NAS: +48 000-000-000</div>
-                  <div><FontAwesomeIcon icon={faHeart} className="pr-2 text-amber-200 text-sm"/>O NAS</div>
-                  <div><FontAwesomeIcon icon={faLocationDot} className="pr-2 text-amber-200 text-sm"/>LOKALIZACJA</div>
-                </div>
-            </div>
-          </div>
-          <div className="w-5/6 mx-auto flex gap-6 flex-col items-start md:flex-row md:items-center mt-6">
-            <a href="" rel="noopener noreferrer" target="_blank"  className="flex items-center gap-2 text-stone-400 hover:text-white transition-colors text-sm"><FontAwesomeIcon icon={faFacebook} className="text-lg"/><span>Facebook</span></a>
-            <a href="" rel="noopener noreferrer" target="_blank" className="flex items-center gap-2 text-stone-400 hover:text-white transition-colors text-sm"><FontAwesomeIcon icon={faInstagram} className="text-lg"/><span>Instagram</span></a>
-            <a href="" rel="noopener noreferrer" target="_blank" className="flex items-center gap-2 text-stone-400 hover:text-white transition-colors text-sm"><FontAwesomeIcon icon={faYoutube} className="text-lg"/><span>Youtube</span></a>
-          </div>
-        </footer>
+        <Footer />
       </>
   );
 }

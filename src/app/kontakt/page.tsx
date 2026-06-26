@@ -1,9 +1,8 @@
 "use client"
-import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPhone, faLocationDot, faEnvelope, faClock } from "@fortawesome/free-solid-svg-icons"
-import NavBar from "../NavBar"
-
+import NavBar from "../components/common/NavBar"
+import Footer from "../components/common/Footer"
 
 export default function Contact() {
 
@@ -123,6 +122,8 @@ export default function Contact() {
 
         </div>
       </div>
+      
+      <Footer />
     </>
   );
 }

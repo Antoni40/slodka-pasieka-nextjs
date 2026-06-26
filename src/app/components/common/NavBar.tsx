@@ -56,8 +56,8 @@ export default function NavBar () {
     <div>
       <div className="md:hidden w-full bg-white text-stone-800 border-b border-black/10 z-2">
         <MobileNavBar isOpen={isMobileMenuOpen && isMobile}>
-          <button  onClick={(e) => {toggleMobileMenu(e)}} aria-label="Zamknij menu">
-            <FontAwesomeIcon icon={faClose} className="text-sm text-red-500 cursor-pointer hover:text-red-400"/>
+          <button className={`transition-transform duration-500 ease-in-out ${isMobileMenuOpen ? 'rotate-0' : '-rotate-90'}`} onClick={(e) => {toggleMobileMenu(e)}} aria-label="Zamknij menu">
+            <FontAwesomeIcon icon={faClose} className="text-xl text-red-500 cursor-pointer hover:text-red-400"/>
           </button>
           <div className="flex flex-col gap-4 py-6 text-center">
             {mainMenuLinks.map((link, index) => (
@@ -97,7 +97,7 @@ export default function NavBar () {
           <img src="https://placehold.co/600x400" alt="Słodka Pasieka Logo" className="max-h-20 w-auto object-contain"/>
         </div>
 
-        <button className="md:hidden p-2 text-xl" aria-label="Otwórz menu" onClick={toggleMobileMenu}>
+        <button className={`md:hidden p-2 text-xl transition-transform duration-500 ease-in-out ${isMobileMenuOpen ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'}`} aria-label="Otwórz menu" onClick={toggleMobileMenu}>
           <FontAwesomeIcon icon={faBars} className="text-sm cursor-pointer"/>
         </button>
       </div>
