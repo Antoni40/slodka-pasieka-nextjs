@@ -1,14 +1,13 @@
+"use client"
 interface pictureInfo {
   src: string;
   alt: string;
   desc: string;
 }
 
-interface pictureProps {
-  picture: pictureInfo;
-}
 
-export default function GalleryPicture({ picture } : pictureProps) {
+export default function GalleryPicture({ picture } : { picture: pictureInfo }) {
+
   return (
     <div className="overflow-hidden rounded-sm">
       <figure>

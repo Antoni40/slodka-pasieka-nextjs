@@ -5,23 +5,12 @@ import { faPhone, faLocationDot, faHeart} from "@fortawesome/free-solid-svg-icon
 import { faFacebook, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import NavBar from "./NavBar"
 
-interface NavLinkItem {
-  label: string;
-  href: string;
-}
 
 function HomePage() {
-
-  const links : NavLinkItem[] = [
-    { label: "LOKALIZACJA", href: '/kontakt' },
-    { label: "STRONA GŁÓWNA", href: '/' },
-    { label: "GALERIA", href: '/galeria' },
-    { label: "KONTAKT", href: '/kontakt'}
-  ]
   
   return (
       <>
-        <NavBar list={links}/>
+        <NavBar />
 
         <section className="pt-10 w-5/6 mx-auto text-stone-800">
           <div className="relative rounded-sm overflow-hidden shadow-sm">

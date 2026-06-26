@@ -4,23 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPhone, faLocationDot, faEnvelope, faClock } from "@fortawesome/free-solid-svg-icons"
 import NavBar from "../NavBar"
 
-interface NavLinkItem {
-  label: string;
-  href: string;
-}
 
 export default function Contact() {
 
-  const links : NavLinkItem[] = [
-    { label: "LOKALIZACJA", href: '/kontakt' },
-    { label: "STRONA GŁÓWNA", href: '/' },
-    { label: "GALERIA", href: '/galeria' },
-    { label: "KONTAKT", href: '/kontakt'}
-  ]
-
   return (
     <>
-      <NavBar list={links}/>
+      <NavBar />
 
       <div className="min-h-screen py-16 text-stone-800 font-sans">
         <div className="w-5/6 mx-auto text-center mb-16">
