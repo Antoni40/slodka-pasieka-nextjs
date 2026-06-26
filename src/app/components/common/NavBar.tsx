@@ -54,6 +54,7 @@ export default function NavBar () {
 
   return (
     <div>
+      {isMobile && isMobileMenuOpen &&
       <div className="md:hidden w-full bg-white text-stone-800 border-b border-black/10 z-2">
         <MobileNavBar isOpen={isMobileMenuOpen && isMobile}>
           <button className={`transition-transform duration-500 ease-in-out ${isMobileMenuOpen ? 'rotate-0' : '-rotate-90'}`} onClick={(e) => {toggleMobileMenu(e)}} aria-label="Zamknij menu">
@@ -68,6 +69,7 @@ export default function NavBar () {
           </div>
         </MobileNavBar>
       </div>
+      }
     <>
       <nav className="bg-stone-800 p-4 gap-4 text-sm text-white font-sans hidden md:block w-full">
         <div className="w-5/6 flex flex-row justify-between items-center mx-auto text-amber-50">
