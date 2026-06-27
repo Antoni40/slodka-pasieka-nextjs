@@ -12,13 +12,11 @@ interface NavLinkItem {
   href: string;
 }
 
-// UWAGA: zmiana komponentów zdjęć na komponent Image (sprecyzowanie wysokości i szerokości nie wiem czy nadaje sie do wszystkiego) i zmianna pobrania linków z listy na funkcję map 
-// w celu lepszego versatity  
+// UWAGA: zmiana komponentów zdjęć na komponent Image (sprecyzowanie wysokości i szerokości nie wiem czy nadaje sie do wszystkiego)
 
 function MobileNavBar({children, isOpen} : { children: React.ReactNode, isOpen: boolean}){
-  //pointer events to dodatkowe zabezpieczenie przed kliknięciami
   return (
-    <div className={`md:hidden w-full bg-white text-stone-800 border-b border-black/10 absolute z-1 h-screen flex flex-col items-center gap-4 py-6 text-center transition-transform duration-500 ${isOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'}`}>
+    <div className={`md:hidden fixed top-0 right-0 w-full bg-white text-stone-800 border-b border-black/10 z-1 h-screen flex flex-col items-center gap-4 py-6 text-center transition-all duration-800 ease-in-out ${isOpen ? 'translate-x-0 pointer-events-auto visible opacity-100' : 'translate-x-full pointer-events-none invisible opacity-0'}`}>
       {children}
     </div>
   )
@@ -35,7 +33,7 @@ export default function NavBar () {
     } else {
       document.body.classList.remove('overflow-y-hidden');
     }
-    //zabezpieczenie przy usunięciu elementu z drzewa nie wiem czy jest potrzebne
+
     return () => document.body.classList.remove('overflow-y-hidden');
   }, [isMobileMenuOpen]);
 
@@ -54,10 +52,9 @@ export default function NavBar () {
 
   return (
     <div>
-      {isMobile && isMobileMenuOpen &&
       <div className="md:hidden w-full bg-white text-stone-800 border-b border-black/10 z-2">
         <MobileNavBar isOpen={isMobileMenuOpen && isMobile}>
-          <button className={`transition-transform duration-500 ease-in-out ${isMobileMenuOpen ? 'rotate-0' : '-rotate-90'}`} onClick={(e) => {toggleMobileMenu(e)}} aria-label="Zamknij menu">
+          <button className={`transition-all duration-500 ease-in-out ${isMobileMenuOpen ? 'rotate-0' : 'rotate-90'}`} onClick={(e) => {toggleMobileMenu(e)}} aria-label="Zamknij menu">
             <FontAwesomeIcon icon={faClose} className="text-xl text-red-500 cursor-pointer hover:text-red-400"/>
           </button>
           <div className="flex flex-col gap-4 py-6 text-center">
@@ -69,7 +66,6 @@ export default function NavBar () {
           </div>
         </MobileNavBar>
       </div>
-      }
     <>
       <nav className="bg-stone-800 p-4 gap-4 text-sm text-white font-sans hidden md:block w-full">
         <div className="w-5/6 flex flex-row justify-between items-center mx-auto text-amber-50">
@@ -95,11 +91,10 @@ export default function NavBar () {
 
       <div className="flex flex-row justify-between md:flex-col md:justify-center items-center gap-6 py-6 w-5/6 font-sans mx-auto border-b border-black/10 md:border-none">
         <div className="flex justify-center">
-          {/* W celu optymalizacji jak będę miał własne zdjecia to wtedy zamienić komponent na Image */}
           <img src="https://placehold.co/600x400" alt="Słodka Pasieka Logo" className="max-h-20 w-auto object-contain"/>
         </div>
 
-        <button className={`md:hidden p-2 text-xl transition-transform duration-500 ease-in-out ${isMobileMenuOpen ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'}`} aria-label="Otwórz menu" onClick={toggleMobileMenu}>
+        <button className={`md:hidden p-2 text-xl transition-all duration-500 ease-in-out ${isMobileMenuOpen ? 'rotate-90' : 'rotate-0'}`} aria-label="Otwórz menu" onClick={toggleMobileMenu}>
           <FontAwesomeIcon icon={faBars} className="text-sm cursor-pointer"/>
         </button>
       </div>

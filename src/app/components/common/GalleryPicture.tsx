@@ -1,4 +1,5 @@
 "use client"
+
 interface pictureInfo {
   src: string;
   alt: string;
