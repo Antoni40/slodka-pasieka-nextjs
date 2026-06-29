@@ -1,29 +1,57 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
 import { faPhone, faHeart, faLocationDot } from "@fortawesome/free-solid-svg-icons"
-import { faFacebook, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faGithub, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+
+interface socialMediaLink {
+  icon: IconDefinition,
+  name: string,
+  path: string,
+  color: string
+}
+
+const socialMediaLinks : socialMediaLink[] = [
+  {icon: faFacebook, name: "Facebook", path: "facebook.com", color: "#3b5998"},
+  {icon: faInstagram, name: "Instagram", path: "instagram.com", color: "#D300C5"},
+  {icon: faYoutube, name: "Youtube", path: "youtube.com", color: "#CD201F"}
+]
 
 export default function Footer() {
   return (
-    <footer className="bg-stone-800 text-amber-50 p-12 w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 w-5/6 mx-auto mb-3 gap-3 border-b border-white/10 items-center pb-3">
-            <div className="">
-              <img src="https://placehold.co/50x50" alt="Logo stopka" className="mb-3"/>
+    <footer className="bg-stone-800 text-stone-50 p-8 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 w-5/6 mx-auto mb-6 gap-3 border-b border-white/10 items-center pb-6">
+            <div>
+              <img src="https://placehold.co/50x50" alt="Zdjęcie logo" className="mb-3"/>
               <div className="text-sm text-stone-200">&copy; Słodka Pasieka {new Date().getFullYear()}. Wszelkie prawa zastrzeżone.</div>
-              <div className="text-sm text-stone-300 mt-1">Realizacja i wdrożenie: Antoni Lubomski</div>
+              <div className="text-sm text-stone-300 mt-1">Realizacja i wdrożenie: Antoni Lubomski <a href="https://github.com/Antoni40" rel="noopener noreferrer external" target="_blank" className="text-stone-400 hover:text-white transition-colors text-sm"><FontAwesomeIcon icon={faGithub}/></a></div>
             </div>
-            <div className="font-sans">
-              <h3 className="text-lg font-bold tracking wider mb-3 text-amber-200">INFORMACJE</h3>
+
+            <div>
+              <h4 className="text-lg font-bold tracking wider mb-3 text-amber-300">INFORMACJE</h4>
               <div className="flex flex-col gap-2 text-stone-300 text-sm">
-                  <div><FontAwesomeIcon icon={faPhone} className="pr-2 text-amber-200 text-sm"/>ZADZWOŃ DO NAS: +48 000-000-000</div>
-                  <div><FontAwesomeIcon icon={faHeart} className="pr-2 text-amber-200 text-sm"/>O NAS</div>
-                  <div><FontAwesomeIcon icon={faLocationDot} className="pr-2 text-amber-200 text-sm"/>LOKALIZACJA</div>
+                  <div>
+                    <a href="tel:+48000000000" className="hover:text-amber-300 transition-colors ease-in"><FontAwesomeIcon icon={faPhone} className="pr-2 text-amber-300 text-sm"/>ZADZWOŃ DO NAS: +48 000-000-000</a>
+                  </div>
+                  <div>
+                    <a href="./#o-nas" className="hover:text-amber-300">
+                      <FontAwesomeIcon icon={faHeart} className="pr-2 text-amber-300 text-sm"/>O NAS
+                    </a>
+                  </div>
+                  <div>
+                    <a href="/kontakt" className="hover:text-amber-300">
+                      <FontAwesomeIcon icon={faLocationDot} className="pr-2 text-amber-300 text-sm"/>LOKALIZACJA
+                    </a>
+                  </div>
                 </div>
             </div>
           </div>
+
           <div className="w-5/6 mx-auto flex gap-6 flex-col items-start md:flex-row md:items-center mt-6">
-            <a href="" rel="noopener noreferrer" target="_blank"  className="flex items-center gap-2 text-stone-400 hover:text-white transition-colors text-sm"><FontAwesomeIcon icon={faFacebook} className="text-lg"/><span>Facebook</span></a>
-            <a href="" rel="noopener noreferrer" target="_blank" className="flex items-center gap-2 text-stone-400 hover:text-white transition-colors text-sm"><FontAwesomeIcon icon={faInstagram} className="text-lg"/><span>Instagram</span></a>
-            <a href="" rel="noopener noreferrer" target="_blank" className="flex items-center gap-2 text-stone-400 hover:text-white transition-colors text-sm"><FontAwesomeIcon icon={faYoutube} className="text-lg"/><span>Youtube</span></a>
+            {socialMediaLinks.map((link, index) => (
+              <a key={index} href={link.path} rel="noopener noreferrer external" target="_blank"  className={`flex items-center gap-2 text-stone-400 hover:text-[${link.color}] transition-colors text-sm`}>
+                <FontAwesomeIcon icon={link.icon} className="text-lg"/><span>{link.name}</span>
+              </a>
+            ))}
           </div>
         </footer>
   );
