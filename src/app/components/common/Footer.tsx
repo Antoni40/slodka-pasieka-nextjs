@@ -2,6 +2,7 @@ import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontaw
 import { faPhone, faHeart, faLocationDot } from "@fortawesome/free-solid-svg-icons"
 import { faFacebook, faGithub, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import Image from "next/image";
 
 interface socialMediaLink {
   icon: IconDefinition,
@@ -11,9 +12,9 @@ interface socialMediaLink {
 }
 
 const socialMediaLinks : socialMediaLink[] = [
-  {icon: faFacebook, name: "Facebook", path: "facebook.com", color: "#3b5998"},
-  {icon: faInstagram, name: "Instagram", path: "instagram.com", color: "#D300C5"},
-  {icon: faYoutube, name: "Youtube", path: "youtube.com", color: "#CD201F"}
+  {icon: faFacebook, name: "Facebook", path: "https://www.facebook.com/", color: "#3b5998"},
+  {icon: faInstagram, name: "Instagram", path: "https://www.instagram.com/", color: "#d300c5"},
+  {icon: faYoutube, name: "Youtube", path: "https://www.youtube.com/", color: "#cd201f"}
 ]
 
 export default function Footer() {
@@ -21,9 +22,11 @@ export default function Footer() {
     <footer className="bg-stone-800 text-stone-50 p-8 w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 w-5/6 mx-auto mb-6 gap-3 border-b border-white/10 items-center pb-6">
             <div>
-              <img src="https://placehold.co/50x50" alt="Zdjęcie logo" className="mb-3"/>
+              <div className="relative w-[50px] h-[50px]">
+                <Image src="/logo.svg" fill alt="Zdjęcie logo" className="mb-3"/>
+              </div>
               <div className="text-sm text-stone-200">&copy; Słodka Pasieka {new Date().getFullYear()}. Wszelkie prawa zastrzeżone.</div>
-              <div className="text-sm text-stone-300 mt-1">Realizacja i wdrożenie: Antoni Lubomski <a href="https://github.com/Antoni40" rel="noopener noreferrer external" target="_blank" className="text-stone-400 hover:text-white transition-colors text-sm"><FontAwesomeIcon icon={faGithub}/></a></div>
+              <div className="text-sm text-stone-300 mt-1">Projekt, realizacja i wdrożenie: Antoni Lubomski <a href="https://github.com/Antoni40" rel="noopener noreferrer external" target="_blank" className="text-stone-400 hover:text-white transition-colors text-sm"><FontAwesomeIcon icon={faGithub}/></a></div>
             </div>
 
             <div>
@@ -48,7 +51,12 @@ export default function Footer() {
 
           <div className="w-5/6 mx-auto flex gap-6 flex-col items-start md:flex-row md:items-center mt-6">
             {socialMediaLinks.map((link, index) => (
-              <a key={index} href={link.path} rel="noopener noreferrer external" target="_blank"  className={`flex items-center gap-2 text-stone-400 hover:text-[${link.color}] transition-colors text-sm`}>
+              <a key={index} 
+                href={link.path} 
+                rel="noopener noreferrer external" 
+                target="_blank"
+                style={{ '--hover-color': link.color } as React.CSSProperties}
+                className={`flex items-center gap-2 text-stone-400 hover:text-[var(--hover-color)] transition-colors text-sm`}>
                 <FontAwesomeIcon icon={link.icon} className="text-lg"/><span>{link.name}</span>
               </a>
             ))}

@@ -19,6 +19,23 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Słodka Pasieka | Strona autorska",
   description: "Nowoczesne słodkości, praliny i torty",
+  openGraph: {
+    title: 'Słodka Pasieka | Strona autorska',
+    description: 'Zamów pyszne, naturalne ciasta i bezy.',
+    url: 'https://slodka-pasieka-nextjs-production.vercel.app/',
+    siteName: 'Słodka Pasieka',
+    locale: 'pl_PL',
+    type: 'website',
+    images: [
+      {
+        url: 'https://slodka-pasieka-nextjs-production.vercel.app/logo.svg',
+        width: 50,
+        height: 50,
+        alt: 'Słodka Pasieka - Logotyp i wypieki',
+        type: 'image/svg'
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

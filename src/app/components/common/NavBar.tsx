@@ -5,6 +5,7 @@ import { faPhone, faLocationDot, faHeart, faBars, faClose } from "@fortawesome/f
 import { faFacebook } from "@fortawesome/free-brands-svg-icons"
 import { useEffect, useState } from "react"
 import { useMediaQuery } from "react-responsive"
+import Image from "next/image"
 
 
 interface NavLinkItem {
@@ -87,8 +88,8 @@ export default function NavBar () {
       </nav>
 
       <div className="flex flex-row justify-between md:flex-col md:justify-center items-center gap-6 py-6 w-5/6 font-sans mx-auto border-b border-black/10 md:border-none">
-        <div className="flex justify-center">
-          <img src="https://placehold.co/600x400" alt="Słodka Pasieka Logo" className="max-h-20 w-auto object-contain"/>
+        <div className=" relative flex justify-center h-[50px] w-[50px]">
+          <Image src="/logo.svg" alt="Słodka Pasieka Logo" fill />
         </div>
 
         <button className={`md:hidden p-2 text-xl transition-all duration-500 ease-in-out ${isMobileMenuOpen ? 'rotate-90' : 'rotate-0'}`} aria-label="Otwórz menu" onClick={toggleMobileMenu}>
